@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import re
 from selenium.webdriver.common.by import By
 import pandas as pd
-import mysql.connector
+from application import mycursor,mydb
 
 class OlxScrapper():
     def __init__(self):
@@ -51,7 +51,7 @@ class OlxScrapper():
         # time.sleep(10)
 
     def extractLinks(self):
-        self.browser.get(self.baseUrl + "/items/q-iphone")
+        self.browser.get(self.baseUrl + "/books-sports-hobbies_c767")
         time.sleep(5)
         soup = BeautifulSoup(self.browser.page_source, "lxml")
         allLinks = soup.find_all('a')
@@ -75,7 +75,7 @@ class OlxScrapper():
     def extractInfoFromLinks(self):
         linkDataFrame=pd.read_csv("data/olxAddsLinks.csv")
         # time.sleep(30)
-        infoDF=pd.DataFrame(columns=["Name","PhoneNumber","MemberSince","Address","AddId","Price"])
+        infoDF=pd.DataFrame(columns=["Name","PhoneNumber","MemberSince","Address","AddId","Price","Heading"])
         for row in range(0,len(linkDataFrame)):
             newRow={}
             fullLink=self.baseUrl+linkDataFrame.at[row,"Links"]
@@ -87,7 +87,7 @@ class OlxScrapper():
                 try:
                     name=self.browser.find_element(By.CSS_SELECTOR,"._1075545d._96d4439a ._1075545d._6caa7349._42f36e3b.d059c029 ._6d5b4928.be13fe44")
                     time.sleep(5)
-                    print(name.text)
+                    # print(name.text)
                     newRow["Name"]=name.text
                 except:
                     newRow["Name"] = "name Not Found"
@@ -96,7 +96,7 @@ class OlxScrapper():
                     memberSince=self.browser.find_element(By.CSS_SELECTOR,"._1075545d._96d4439a ._1075545d._6caa7349._42f36e3b.d059c029  ._05330198 ._6d5b4928")
                     time.sleep(3)
                 # print(name.text)
-                    newRow["MemberSince"]=memberSince.text
+                    newRow["MemberSince"]=memberSince.text[13:]
 
                 except:
                     newRow["MemberSince"]="member since not found"
@@ -107,21 +107,14 @@ class OlxScrapper():
                 # print(name.text)
                     newRow["Address"]=address.text
                 except:
-                    newRow["Address"]="member since not found"
+                    newRow["Address"]="address not found"
                     continue
-                try:
-                    address=self.browser.find_element(By.CSS_SELECTOR,"._1075545d._0fe18041 ._25ceab92 ")
-                    time.sleep(3)
-                # print(name.text)
-                    newRow["Address"]=address.text
-                except:
-                    newRow["Address"]="member since not found"
-                    continue
+
                 try:
                     adId=self.browser.find_element(By.CSS_SELECTOR,"._1075545d._84d5a753._5f872d11._96d4439a ._171225da")
                     time.sleep(3)
                 # print(name.text)
-                    newRow["AddId"] = adId.text
+                    newRow["AddId"] = adId.text[6:]
                 except:
                     newRow["AddId"] = "no id found"
                     continue
@@ -136,18 +129,25 @@ class OlxScrapper():
                 try:
                     buttonNumber = self.browser.find_element(By.CSS_SELECTOR,".cf4781f0 ._1075545d.d059c029 ._1075545d.b34f9439._42f36e3b._96d4439a._1709dcb4 ._4408f4a8._58676a35").click()
                     time.sleep(3)
-                    # # print(name.text)
-                    # newRow["Description"] = descripting.text
+
                 except:
-                # newRow["Description"] = "no button pressed"
                     continue
                 try:
                     number = self.browser.find_element(By.CSS_SELECTOR,"._4408f4a8._58676a35 ._5079de6b.be13fe44 ._45d98091.ae608d5a._221ec77a.be13fe44")
                     time.sleep(3)
-                    print(number.text)
+                    # print(number.text)
                     newRow["PhoneNumber"] = number.text
                 except:
                     newRow["PhoneNumber"] = "no number found"
+                    continue
+
+                try:
+                    heading = self.browser.find_element(By.CSS_SELECTOR,"._1075545d.d059c029._858a64cf .a38b8112")
+                    time.sleep(3)
+                    # print(number.text)
+                    newRow["Heading"] = heading.text
+                except:
+                    newRow["Heading"] = "no heading"
                     continue
 
                 print("this is new row",newRow)
@@ -162,23 +162,18 @@ class OlxScrapper():
         infoDF.to_csv("data/olxContactInfo.csv",mode="a",header=False,index=False)
 
     def addingDataToDatabase(self):
-        mydb = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="",
-            database="olxdatabase"
-        )
+
         contactInfoDf=pd.read_csv("data/olxContactInfo.csv")
         contactInfoDf.fillna("no value",inplace=True)
         # print(contactInfoDf)
-        query = "INSERT INTO contactinfo (Name, PhoneNumer,MemberSince,Address,AddId,Price) VALUES (%s, %s, %s, %s, %s, %s)"
+        query = "INSERT INTO contactinfo (Name, PhoneNumer,MemberSince,Address,AddId,Price,AddHeading) VALUES (%s, %s, %s, %s, %s, %s, %s)"
         for x in range(0,len(contactInfoDf)):
-            val = (contactInfoDf.at[x,"Name"], str(contactInfoDf.at[x,"PhoneNumber"]),contactInfoDf.at[x,"MemberSince"],contactInfoDf.at[x,"Address"],contactInfoDf.at[x,"AddId"],contactInfoDf.at[x,"price"])
+            val = (contactInfoDf.at[x,"Name"], str(contactInfoDf.at[x,"PhoneNumber"]),contactInfoDf.at[x,"MemberSince"],contactInfoDf.at[x,"Address"],str(contactInfoDf.at[x,"AddId"]),contactInfoDf.at[x,"price"],contactInfoDf.at[x,"Heading"])
             print(val)
-            mycursor = mydb.cursor()
+            # mycursor = mydb.cursor()
             mycursor.execute(query, val)
             mydb.commit()
-            print(mycursor.rowcount, "record inserted.")
+            # print(mycursor.rowcount, "record inserted.")
 
 
 
@@ -190,6 +185,7 @@ if __name__=="__main__":
     # scrapper.saveInExcelFile(linksList)
     # time.sleep(5)
     # scrapper.extractInfoFromLinks()
+    # time.sleep(30)
     scrapper.addingDataToDatabase()
 
 

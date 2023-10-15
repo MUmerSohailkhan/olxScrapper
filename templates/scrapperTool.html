@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>BigBang Scrapper</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+
+ <section> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>
+	
+	 <div class="signin">
+		
+		 <form class="content" method="POST" action="/scrapperTool">
+			
+			 <h2>Big Bang Scrapper</h2>
+			
+			 <div class="form">
+				 
+				 <div class="inputBox">
+				 <select class="select-input" name="option1" id="select_input1">
+                    <option value="OLX">OLX</option>
+                    <option value="Pakwheels">Pakwheels</option>
+                    <option value="Zameen">Zameen</option>
+				 </select>
+				
+				</div>
+				<div class="inputBox">
+				 <select class="select-input" name="option2" id="select_input2">
+                    <option value="MobilePhone">Mobile Phone</option>
+                    <option value="Vehicles">Vehicles</option>
+                    <option value="Bikes">Bikes</option>
+					 <option value="Propertyforsale">Property for sale</option>
+                    <option value="PropertyforRent">Property fro Rent</option>
+                    <option value="ElectronicsandHomeAppliances">Electronics and Home Appliances</option>
+					 <option value="Services">Services</option>
+                    <option value="Jobs">Jobs</option>
+                    <option value="Animals">Animals</option>
+					 <option value="Furniture">Furniture</option>
+                    <option value="HomeDecor">Home Decor</option>
+                    <option value="FashionBeauty">Fashion Beauty</option>
+					 <option value="BookSportsandHobby">Book Sports and Hobby</option>
+                    <option value="Kids">Kids</option>
+				 </select>
+				
+				</div>
+				
+				 <!--      <div class="links"> <a href="#">Forgot Password</a> <a href="#">Signup</a> -->
+			
+			 </div>
+			
+			 <div class="inputBox">
+				
+				 <input onclick="startProgress()" type="submit" value="Scrap it...">
+			
+			 </div>
+		
+		 <div class="progress-container">
+        <div class="progress-bar" id="myProgressBar"></div>
+    </div>
+		 </form>
+	
+	 </div>
+	
+	 </div>
+
+ </section> <!-- partial -->
+<script src="script.js"></script>
+
+ </body>
+
+</html>

@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="content-section">
+	<form method="POST" action="/login">
+	<label for="data_input">Enter Data:</label>
+		<input type="text" name="data" id="data_input">
+        <br>
+        <input type="submit" value="Submit">
+		
+	</form>
+
+		
+</div>
+
+{% endblock content %}
