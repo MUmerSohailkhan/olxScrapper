@@ -22,10 +22,9 @@
 
  </head>
 
- <body> <!-- partial:index.partial.html -->
+ <body class="contactInfoPadeBody"> <!-- partial:index.partial.html -->
 
- <section> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>
-	
+ <table-section class="table-section">
 	
 
 	 <table class="table" >
@@ -47,12 +46,31 @@
         <td>{{ contact[3] }}</td>
 	    <td>{{ contact[4] }}</td>
         <td>{{ contact[5] }}</td>
+	    <td>{{ contact[7] }}</td>
 <!--        <td>contact[][0]</td>-->
     </tr>
 		 {% endfor %}
   
 </table>
- </section> <!-- partial -->
+<!--	 <div>-->
+<!--	 <ul class="pagination">-->
+<!--    {% if page > 1 %}-->
+<!--        <li class="page-item"><a class="page-link" href="?page={{ page - 1 }}">Previous</a></li>-->
+<!--    {% endif %}-->
+<!--    {% for p in range(1, total_pages + 1) %}-->
+<!--        <li class="page-item {% if p == page %}active{% endif %}">-->
+<!--            <a class="page-link" href="?page={{ p }}">{{ p }}</a>-->
+<!--        </li>-->
+<!--    {% endfor %}-->
+<!--    {% if page < total_pages %}-->
+<!--        <li class="page-item"><a class="page-link" href="?page={{ page + 1 }}">Next</a></li>-->
+<!--    {% endif %}-->
+<!--</ul>-->
+<!--		 </div>-->
+	
+
+
+ </table-section> <!-- partial -->
 
  </body>
 

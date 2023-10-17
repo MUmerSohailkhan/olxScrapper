@@ -1,5 +1,24 @@
-2023/10/15-12:50:57.373 19fc Reusing MANIFEST E:\projects\mubashirbhai\scrapper\src\userdata\Default\Local Storage\leveldb/MANIFEST-000001
-2023/10/15-12:50:57.374 19fc Recovering log #127
-2023/10/15-12:50:57.375 19fc Level-0 table #131: started
-2023/10/15-12:50:57.627 19fc Level-0 table #131: 16999 bytes OK
-2023/10/15-12:50:57.750 19fc Delete type=0 #127
+2023/10/18-00:16:11.191 314 Reusing MANIFEST E:\projects\mubashirbhai\scrapper\src\userdata\Default\Local Storage\leveldb/MANIFEST-000001
+2023/10/18-00:16:11.193 314 Recovering log #169
+2023/10/18-00:16:11.196 314 Reusing old log E:\projects\mubashirbhai\scrapper\src\userdata\Default\Local Storage\leveldb/000169.log 
+2023/10/18-00:17:12.111 e00 Level-0 table #173: started
+2023/10/18-00:17:12.186 e00 Level-0 table #173: 17079 bytes OK
+2023/10/18-00:17:12.221 e00 Delete type=0 #169
+2023/10/18-00:17:12.221 314 Compacting 4@0 + 1@1 files
+2023/10/18-00:17:12.273 314 Generated table #174@0: 21 keys, 9873 bytes
+2023/10/18-00:17:12.273 314 Compacted 4@0 + 1@1 files => 9873 bytes
+2023/10/18-00:17:12.297 314 compacted to: files[ 0 1 0 0 0 0 0 ]
+2023/10/18-00:17:12.299 314 Delete type=2 #164
+2023/10/18-00:17:12.299 314 Delete type=2 #166
+2023/10/18-00:17:12.299 314 Delete type=2 #168
+2023/10/18-00:17:12.299 314 Delete type=2 #170
+2023/10/18-00:17:12.299 314 Delete type=2 #173
+2023/10/18-00:20:12.111 e00 Level-0 table #176: started
+2023/10/18-00:20:12.163 e00 Level-0 table #176: 17022 bytes OK
+2023/10/18-00:20:12.198 e00 Delete type=0 #172
+2023/10/18-00:23:12.110 e00 Level-0 table #178: started
+2023/10/18-00:23:12.171 e00 Level-0 table #178: 17073 bytes OK
+2023/10/18-00:23:12.206 e00 Delete type=0 #175
+2023/10/18-00:25:24.226 e00 Level-0 table #180: started
+2023/10/18-00:25:24.287 e00 Level-0 table #180: 17024 bytes OK
+2023/10/18-00:25:24.314 e00 Delete type=0 #177

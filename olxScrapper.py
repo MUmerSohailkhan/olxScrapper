@@ -6,6 +6,7 @@ import re
 from selenium.webdriver.common.by import By
 import pandas as pd
 from application import mycursor,mydb
+from datetime import date
 
 class OlxScrapper():
     def __init__(self):
@@ -51,7 +52,7 @@ class OlxScrapper():
         # time.sleep(10)
 
     def extractLinks(self):
-        self.browser.get(self.baseUrl + "/books-sports-hobbies_c767")
+        self.browser.get(self.baseUrl + "/electronics-home-appliances_c99")
         time.sleep(5)
         soup = BeautifulSoup(self.browser.page_source, "lxml")
         allLinks = soup.find_all('a')
@@ -150,16 +151,41 @@ class OlxScrapper():
                     newRow["Heading"] = "no heading"
                     continue
 
-                print("this is new row",newRow)
-                infoDF=infoDF.append(newRow,ignore_index=True)
+                try:
+                    description = self.browser.find_element(By.CSS_SELECTOR,".cf4781f0 ._0f86855a span")
+                    time.sleep(3)
+                    # print(number.text)
+                    newRow["description"] = description.text
+                except:
+                    newRow["description"] = "no description"
+                    continue
 
+
+
+
+
+
+                # print("this is new row",newRow)
+                # infoDF=infoDF.append(newRow,ignore_index=True)
+                # try:
+                #
+                # except:
+                #     print("data not inserted")
+                #     continue
             except:
                 continue
+            query = "INSERT INTO contactinfo (Name, PhoneNumer,MemberSince,addPosted,Address,AddId,Price,AddHeading,category,description) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+            val = (newRow["Name"], newRow["PhoneNumber"], newRow["MemberSince"], date.today(), newRow["Address"],
+               newRow["AddId"], newRow["Price"], newRow["Heading"], "Electronics", newRow["description"])
+            print(val)
+            mycursor.execute(query, val)
+        mydb.commit()
+
+        # print(infoDF)
 
 
 
-        print(infoDF)
-        infoDF.to_csv("data/olxContactInfo.csv",mode="a",header=False,index=False)
+        # infoDF.to_csv("data/olxContactInfo.csv",mode="a",header=False,index=False)
 
     def addingDataToDatabase(self):
 
@@ -180,13 +206,12 @@ class OlxScrapper():
 
 if __name__=="__main__":
     scrapper=OlxScrapper()
-    # linksList=scrapper.extractLinks()
-    # time.sleep(10)
-    # scrapper.saveInExcelFile(linksList)
-    # time.sleep(5)
-    # scrapper.extractInfoFromLinks()
-    # time.sleep(30)
-    scrapper.addingDataToDatabase()
+    linksList=scrapper.extractLinks()
+    time.sleep(10)
+    scrapper.saveInExcelFile(linksList)
+    time.sleep(5)
+    scrapper.extractInfoFromLinks()
+
 
 
     # scrapper.loginInOLX()
