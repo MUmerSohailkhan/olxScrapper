@@ -54,6 +54,13 @@ class OlxScrapper():
     def extractLinks(self):
         self.browser.get(self.baseUrl + "/electronics-home-appliances_c99")
         time.sleep(5)
+        for count in range(0,5):
+            loadMoreButton=self.browser.find_element(By.CSS_SELECTOR,"._1075545d._96d4439a.d059c029._858a64cf ._95dae89d ._4408f4a8._5d33e436").click()
+            time.sleep(3)
+            self.browser.execute_script("window.scrollBy(0,1000)")
+            time.sleep(2)
+            loadMoreButton = self.browser.find_element(By.CSS_SELECTOR,"._1075545d._96d4439a.d059c029._858a64cf ._95dae89d ._4408f4a8._5d33e436").click()
+            time.sleep(3)
         soup = BeautifulSoup(self.browser.page_source, "lxml")
         allLinks = soup.find_all('a')
         allLinkSet = set()
@@ -155,7 +162,7 @@ class OlxScrapper():
                     description = self.browser.find_element(By.CSS_SELECTOR,".cf4781f0 ._0f86855a span")
                     time.sleep(3)
                     # print(number.text)
-                    newRow["description"] = description.text
+                    newRow["description"] = description.text.replace("  ",'')
                 except:
                     newRow["description"] = "no description"
                     continue
@@ -174,7 +181,7 @@ class OlxScrapper():
                 #     continue
             except:
                 continue
-            query = "INSERT INTO contactinfo (Name, PhoneNumer,MemberSince,addPosted,Address,AddId,Price,AddHeading,category,description) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+            query = "INSERT INTO contactinfo (Name, PhoneNumber,MemberSince,addPosted,Address,AddId,Price,AddHeading,category,description) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
             val = (newRow["Name"], newRow["PhoneNumber"], newRow["MemberSince"], date.today(), newRow["Address"],
                newRow["AddId"], newRow["Price"], newRow["Heading"], "Electronics", newRow["description"])
             print(val)
@@ -206,10 +213,10 @@ class OlxScrapper():
 
 if __name__=="__main__":
     scrapper=OlxScrapper()
-    linksList=scrapper.extractLinks()
-    time.sleep(10)
-    scrapper.saveInExcelFile(linksList)
-    time.sleep(5)
+    # linksList=scrapper.extractLinks()
+    # time.sleep(10)
+    # scrapper.saveInExcelFile(linksList)
+    # time.sleep(5)
     scrapper.extractInfoFromLinks()
 
 

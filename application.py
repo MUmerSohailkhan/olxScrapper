@@ -1,4 +1,4 @@
-from flask import Flask,request,render_template,redirect,url_for
+from flask import Flask,request,render_template,redirect,url_for,jsonify
 import mysql.connector
 import time
 from flask_login import LoginManager,login_required,login_user ,UserMixin
@@ -90,10 +90,55 @@ def contactInfo():
 
     return render_template("contactInfo.html",contactData=contactData, page=page, per_page=per_page, total_pages=total_pages)
 
-# @app.route("/filteredContactInfo", methods=["Post", "Get"])
-# def filteredContactInfo():
-#     if request
-
+@app.route("/api/olxdata", methods=["Post", "Get"])
+def filteredContactInfo():
+    param=list(request.args.keys())
+    # print(type(param))
+    # return "ok"
+    print(len(param))
+    findValue=list(request.args.values())
+    print(findValue)
+    if (len(param)==1 and (param[0]=='addid'or param[0]=='contactid'or param[0]=='phonenumber' )):
+        query=f"select * from contactInfo where addid='{findValue[0]}' or contactid='{findValue[0]}' or phonenumber='{findValue[0]}'"
+        print(query)
+        mycursor.execute(query)
+        data=mycursor.fetchall()
+        return data,200
+    elif len(param)<1:
+        return jsonify({"Message":"please insert proper parameters according to documentation"}),400
+    else:
+        paraList=list(request.args.keys())
+        parameters = dict(request.args.items())
+        offset = parameters['start']
+        if 'city' in paraList and 'address' not in paraList:
+            print(parameters)
+            # (int(parameters['start'])-1)*int(parameters['range'])
+            city=parameters['city']
+            query=f"select * from contactInfo where  Address like '%{city}%' LIMIT {parameters['range']} OFFSET {offset}"
+            print(query)
+            mycursor.execute(query)
+            data=mycursor.fetchall()
+        elif ('address' in paraList and 'city' not in paraList) or ('address' in paraList and 'city'  in paraList):
+            address=parameters['address']
+            query = f"select * from contactInfo where  Address like '%{address}%' LIMIT {parameters['range']} OFFSET {offset}"
+            print(query)
+            mycursor.execute(query)
+            data = mycursor.fetchall()
+        elif 'addid' in paraList:
+            print('addid')
+        return data,200
+    # page=int(request.args.get('page',1))
+    # perPage=10
+    # offset=(page - 1) * perPage
+    # cityName=request.args.get('city')
+    # print(cityName)
+    # print(type(cityName))
+    # query=f"select * from contactInfo where  Address like '%{cityName}%' LIMIT {perPage} OFFSET {offset}"
+    # print(query)
+    # mycursor.execute(query)
+    # data=mycursor.fetchall()
+    # print(data)
+    # return data
 
 if __name__=="__main__":
     app.run(debug=True)

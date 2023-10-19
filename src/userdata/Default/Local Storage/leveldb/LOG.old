@@ -1,7 +1,5 @@
-2023/10/18-00:14:59.532 182c Reusing MANIFEST E:\projects\mubashirbhai\scrapper\src\userdata\Default\Local Storage\leveldb/MANIFEST-000001
-2023/10/18-00:14:59.534 182c Recovering log #167
-2023/10/18-00:14:59.534 182c Level-0 table #170: started
-2023/10/18-00:14:59.772 182c Level-0 table #170: 17022 bytes OK
-2023/10/18-00:14:59.772 182c Recovering log #169
-2023/10/18-00:14:59.775 182c Reusing old log E:\projects\mubashirbhai\scrapper\src\userdata\Default\Local Storage\leveldb/000169.log 
-2023/10/18-00:14:59.864 182c Delete type=0 #167
+2023/10/18-00:44:59.298 4198 Reusing MANIFEST E:\projects\mubashirbhai\scrapper\src\userdata\Default\Local Storage\leveldb/MANIFEST-000001
+2023/10/18-00:44:59.300 4198 Recovering log #182
+2023/10/18-00:44:59.300 4198 Level-0 table #186: started
+2023/10/18-00:44:59.429 4198 Level-0 table #186: 21491 bytes OK
+2023/10/18-00:44:59.464 4198 Delete type=0 #182
