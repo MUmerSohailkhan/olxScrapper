@@ -2,7 +2,7 @@ from flask import Flask,request,render_template,redirect,url_for,jsonify
 import mysql.connector
 import time
 from flask_login import LoginManager,login_required,login_user ,UserMixin
-
+from utils import createPattern
 
 
 
@@ -99,7 +99,7 @@ def filteredContactInfo():
     findValue=list(request.args.values())
     print(findValue)
     if (len(param)==1 and (param[0]=='addid'or param[0]=='contactid'or param[0]=='phonenumber' )):
-        query=f"select * from contactInfo where addid='{findValue[0]}' or contactid='{findValue[0]}' or phonenumber='{findValue[0]}'"
+        query=f"select * from olxdata where addid='{findValue[0]}' or contactid='{findValue[0]}' or phonenumber='{findValue[0]}'"
         print(query)
         mycursor.execute(query)
         data=mycursor.fetchall()
@@ -112,33 +112,43 @@ def filteredContactInfo():
         offset = parameters['start']
         if 'city' in paraList and 'address' not in paraList:
             print(parameters)
-            # (int(parameters['start'])-1)*int(parameters['range'])
-            city=parameters['city']
-            query=f"select * from contactInfo where  Address like '%{city}%' LIMIT {parameters['range']} OFFSET {offset}"
+            city=parameters['city'].split(',')
+            cityPattern=list(map(createPattern,city))
+            print(cityPattern)
+            query = "SELECT * FROM olxdata WHERE " + " OR ".join(["Address LIKE %s" for _ in cityPattern])+ f" LIMIT {parameters['range']} OFFSET {parameters['start']}"
             print(query)
-            mycursor.execute(query)
+            mycursor.execute(query,cityPattern)
             data=mycursor.fetchall()
         elif ('address' in paraList and 'city' not in paraList) or ('address' in paraList and 'city'  in paraList):
-            address=parameters['address']
-            query = f"select * from contactInfo where  Address like '%{address}%' LIMIT {parameters['range']} OFFSET {offset}"
+            address=parameters['address'].split('|')
+            query = f"select * from olxdata where  Address IN {tuple(address)} LIMIT {parameters['range']} OFFSET {offset}"
             print(query)
             mycursor.execute(query)
             data = mycursor.fetchall()
         elif 'addid' in paraList:
-            print('addid')
+            addid=parameters['addid'].split(',')
+            print(addid)
+            query = f"select * from olxdata where  Addid IN {tuple(addid)} LIMIT {parameters['range']} OFFSET {offset}"
+            mycursor.execute(query)
+            data = mycursor.fetchall()
+        elif 'addid' in paraList and 'city' in paraList and 'phonenumber' in paraList:
+            addid=parameters['addid'].split(',')
+            city = parameters['city']
+            phonenumber=parameters['city'].split(',')
+            query = f"select * from olxdata where  Addid IN {tuple(addid)} and Address like '%{city}%' LIMIT {parameters['range']} OFFSET {offset}"
+            mycursor.execute(query)
+            data = mycursor.fetchall()
+
         return data,200
-    # page=int(request.args.get('page',1))
-    # perPage=10
-    # offset=(page - 1) * perPage
-    # cityName=request.args.get('city')
-    # print(cityName)
-    # print(type(cityName))
-    # query=f"select * from contactInfo where  Address like '%{cityName}%' LIMIT {perPage} OFFSET {offset}"
-    # print(query)
-    # mycursor.execute(query)
-    # data=mycursor.fetchall()
-    # print(data)
-    # return data
+
+@app.route("/api/createSearchWord", methods=["Post", "Get"])
+def createSearchWord():
+    searchWord=request.args.get('searchWord')
+    print(searchWord)
+    with open('searchWord.txt','w') as file:
+        file.write(searchWord)
+        file.close()
+        return {'Message':'Search word is set'},200
 
 if __name__=="__main__":
     app.run(debug=True)

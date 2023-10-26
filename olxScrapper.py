@@ -6,10 +6,10 @@ import re
 from selenium.webdriver.common.by import By
 import pandas as pd
 from application import mycursor,mydb
-from datetime import date
+import datetime
 
 class OlxScrapper():
-    def __init__(self):
+    def __init__(self,searchWord):
         chromeOptions = webdriver.ChromeOptions()
 
         # chromeOptions.add_argument('--headless')
@@ -32,6 +32,8 @@ class OlxScrapper():
         self.browser.implicitly_wait(5)
         self.browser.maximize_window()
         self.baseUrl="https://www.olx.com.pk"
+        self.searchWord=searchWord
+
 
     def loginInOLX(self):
         self.browser.get(self.baseUrl)
@@ -52,15 +54,22 @@ class OlxScrapper():
         # time.sleep(10)
 
     def extractLinks(self):
-        self.browser.get(self.baseUrl + "/electronics-home-appliances_c99")
+
+        self.browser.get(self.baseUrl)
+        searchfield=self.browser.find_element(By.CSS_SELECTOR,"._1075545d._1dc43551 ._45df2c45 ._2cf807e6._828ba44c ._162767a9")
+        searchfield.send_keys(searchWord)
+        searchSubmit=self.browser.find_element(By.CSS_SELECTOR,"._1075545d._1dc43551 .a3e390b5").click()
         time.sleep(5)
         for count in range(0,5):
-            loadMoreButton=self.browser.find_element(By.CSS_SELECTOR,"._1075545d._96d4439a.d059c029._858a64cf ._95dae89d ._4408f4a8._5d33e436").click()
-            time.sleep(3)
-            self.browser.execute_script("window.scrollBy(0,1000)")
-            time.sleep(2)
-            loadMoreButton = self.browser.find_element(By.CSS_SELECTOR,"._1075545d._96d4439a.d059c029._858a64cf ._95dae89d ._4408f4a8._5d33e436").click()
-            time.sleep(3)
+            try:
+                loadMoreButton=self.browser.find_element(By.CSS_SELECTOR,"._1075545d._96d4439a.d059c029._858a64cf ._95dae89d ._4408f4a8._5d33e436").click()
+                time.sleep(3)
+                self.browser.execute_script("window.scrollBy(0,1000)")
+                time.sleep(2)
+                loadMoreButton = self.browser.find_element(By.CSS_SELECTOR,"._1075545d._96d4439a.d059c029._858a64cf ._95dae89d ._4408f4a8._5d33e436").click()
+                time.sleep(3)
+            except:
+                continue
         soup = BeautifulSoup(self.browser.page_source, "lxml")
         allLinks = soup.find_all('a')
         allLinkSet = set()
@@ -144,7 +153,7 @@ class OlxScrapper():
                     number = self.browser.find_element(By.CSS_SELECTOR,"._4408f4a8._58676a35 ._5079de6b.be13fe44 ._45d98091.ae608d5a._221ec77a.be13fe44")
                     time.sleep(3)
                     # print(number.text)
-                    newRow["PhoneNumber"] = number.text
+                    newRow["PhoneNumber"] = number.text[1:]
                 except:
                     newRow["PhoneNumber"] = "no number found"
                     continue
@@ -167,32 +176,43 @@ class OlxScrapper():
                     newRow["description"] = "no description"
                     continue
 
+                try:
+                    addPosted = self.browser.find_element(By.CSS_SELECTOR,"._1075545d.e3cecb8b._5f872d11 ._6d5b4928 span")
+                    time.sleep(3)
+                    olxAddPostedDate=addPosted.text
+                    addPostedDateList = olxAddPostedDate.split(' ')
+                    if 'hours'  in olxAddPostedDate or 'hour' in olxAddPostedDate:
+                        addPostedDate = datetime.datetime.today()
+                        newRow["addPosted"]=addPostedDate.date()
 
+                    elif 'days' in olxAddPostedDate or 'day' in olxAddPostedDate:
+                        addPostedDate = datetime.datetime.today()-datetime.timedelta(days=int(addPostedDateList[0]))
+                        newRow["addPosted"]=addPostedDate.date()
 
+                    elif 'week'  in olxAddPostedDate or 'weeks'  in olxAddPostedDate:
+                        addPostedDate = datetime.datetime.today() - datetime.timedelta(days=int(addPostedDateList[0])*7)
+                        newRow["addPosted"]=addPostedDate.date()
 
+                    elif 'month'  in olxAddPostedDate or 'months' in olxAddPostedDate:
+                        addPostedDate = datetime.datetime.today() - datetime.timedelta(days=int(addPostedDateList[0])*30)
+                        newRow["addPosted"]=addPostedDate.date()
 
+                except:
+                    newRow["addPosted"] = "no description"
+                    continue
 
-                # print("this is new row",newRow)
-                # infoDF=infoDF.append(newRow,ignore_index=True)
-                # try:
-                #
-                # except:
-                #     print("data not inserted")
-                #     continue
             except:
                 continue
-            query = "INSERT INTO contactinfo (Name, PhoneNumber,MemberSince,addPosted,Address,AddId,Price,AddHeading,category,description) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-            val = (newRow["Name"], newRow["PhoneNumber"], newRow["MemberSince"], date.today(), newRow["Address"],
-               newRow["AddId"], newRow["Price"], newRow["Heading"], "Electronics", newRow["description"])
-            print(val)
-            mycursor.execute(query, val)
+            try:
+                query = "INSERT INTO OlxData (Name, PhoneNumber,MemberSince,AddPosted,Address,AddId,Price,AddHeading,AddCategory,AddDescription,RecordAdded) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+                val = (newRow["Name"], newRow["PhoneNumber"], newRow["MemberSince"], newRow["addPosted"], newRow["Address"],
+                    newRow["AddId"], newRow["Price"], newRow["Heading"], self.searchWord, newRow["description"],datetime.date.today())
+                print(val)
+                mycursor.execute(query, val)
+            except:
+                continue
         mydb.commit()
 
-        # print(infoDF)
-
-
-
-        # infoDF.to_csv("data/olxContactInfo.csv",mode="a",header=False,index=False)
 
     def addingDataToDatabase(self):
 
@@ -212,11 +232,14 @@ class OlxScrapper():
 
 
 if __name__=="__main__":
-    scrapper=OlxScrapper()
-    # linksList=scrapper.extractLinks()
-    # time.sleep(10)
-    # scrapper.saveInExcelFile(linksList)
-    # time.sleep(5)
+    with open('searchWord.txt', 'r') as file:
+        searchWord = file.read()
+        file.close()
+    scrapper=OlxScrapper(searchWord)
+    linksList=scrapper.extractLinks()
+    time.sleep(10)
+    scrapper.saveInExcelFile(linksList)
+    time.sleep(5)
     scrapper.extractInfoFromLinks()
 
 

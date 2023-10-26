@@ -1,3 +1,9 @@
-2023/10/18-01:44:20.637 19e4 Reusing MANIFEST E:\projects\mubashirbhai\scrapper\src\userdata\Default\IndexedDB\https_www.olx.com.pk_0.indexeddb.leveldb/MANIFEST-000001
-2023/10/18-01:44:20.638 19e4 Recovering log #7
-2023/10/18-01:44:20.912 19e4 Reusing old log E:\projects\mubashirbhai\scrapper\src\userdata\Default\IndexedDB\https_www.olx.com.pk_0.indexeddb.leveldb/000007.log 
+2023/10/24-20:39:54.838 37c4 Reusing MANIFEST E:\projects\mubashirbhai\scrapper\src\userdata\Default\IndexedDB\https_www.olx.com.pk_0.indexeddb.leveldb/MANIFEST-000001
+2023/10/24-20:39:54.839 37c4 Recovering log #20
+2023/10/24-20:39:54.948 37c4 Reusing old log E:\projects\mubashirbhai\scrapper\src\userdata\Default\IndexedDB\https_www.olx.com.pk_0.indexeddb.leveldb/000020.log 
+2023/10/24-20:40:13.411 35b8 Compacting 1@1 + 1@2 files
+2023/10/24-20:40:13.573 35b8 Generated table #23@1: 198 keys, 5133 bytes
+2023/10/24-20:40:13.573 35b8 Compacted 1@1 + 1@2 files => 5133 bytes
+2023/10/24-20:40:13.618 35b8 compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/10/24-20:40:13.619 35b8 Delete type=2 #18
+2023/10/24-20:40:13.619 35b8 Delete type=2 #21

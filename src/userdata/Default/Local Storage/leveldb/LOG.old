@@ -1,5 +1,212 @@
-2023/10/18-00:44:59.298 4198 Reusing MANIFEST E:\projects\mubashirbhai\scrapper\src\userdata\Default\Local Storage\leveldb/MANIFEST-000001
-2023/10/18-00:44:59.300 4198 Recovering log #182
-2023/10/18-00:44:59.300 4198 Level-0 table #186: started
-2023/10/18-00:44:59.429 4198 Level-0 table #186: 21491 bytes OK
-2023/10/18-00:44:59.464 4198 Delete type=0 #182
+2023/10/24-09:58:41.960 4d8c Reusing MANIFEST E:\projects\mubashirbhai\scrapper\src\userdata\Default\Local Storage\leveldb/MANIFEST-000001
+2023/10/24-09:58:41.962 4d8c Recovering log #479
+2023/10/24-09:58:42.123 4d8c Level-0 table #482: started
+2023/10/24-09:58:42.373 4d8c Level-0 table #482: 16992 bytes OK
+2023/10/24-09:58:42.777 4d8c Delete type=0 #479
+2023/10/24-10:02:57.729 4dfc Level-0 table #485: started
+2023/10/24-10:02:57.930 4dfc Level-0 table #485: 20928 bytes OK
+2023/10/24-10:02:57.985 4dfc Delete type=0 #483
+2023/10/24-10:02:57.987 4dfc Compacting 4@0 + 1@1 files
+2023/10/24-10:02:58.098 4dfc Generated table #486@0: 21 keys, 10026 bytes
+2023/10/24-10:02:58.098 4dfc Compacted 4@0 + 1@1 files => 10026 bytes
+2023/10/24-10:02:58.182 4dfc compacted to: files[ 0 1 0 0 0 0 0 ]
+2023/10/24-10:02:58.186 4dfc Delete type=2 #476
+2023/10/24-10:02:58.295 4dfc Delete type=2 #478
+2023/10/24-10:02:58.295 4dfc Delete type=2 #480
+2023/10/24-10:02:58.295 4dfc Delete type=2 #482
+2023/10/24-10:02:58.295 4dfc Delete type=2 #485
+2023/10/24-10:05:57.724 4dfc Level-0 table #488: started
+2023/10/24-10:05:57.785 4dfc Level-0 table #488: 17012 bytes OK
+2023/10/24-10:05:57.847 4dfc Delete type=0 #484
+2023/10/24-10:08:57.733 4dfc Level-0 table #490: started
+2023/10/24-10:08:57.862 4dfc Level-0 table #490: 17010 bytes OK
+2023/10/24-10:08:57.950 4dfc Delete type=0 #487
+2023/10/24-10:11:57.754 4dfc Level-0 table #492: started
+2023/10/24-10:11:58.542 4dfc Level-0 table #492: 17012 bytes OK
+2023/10/24-10:11:58.819 4dfc Delete type=0 #489
+2023/10/24-10:14:57.722 4dfc Level-0 table #494: started
+2023/10/24-10:14:57.802 4dfc Level-0 table #494: 17012 bytes OK
+2023/10/24-10:14:57.858 4dfc Delete type=0 #491
+2023/10/24-10:14:57.858 4dfc Compacting 4@0 + 1@1 files
+2023/10/24-10:14:57.906 4dfc Generated table #495@0: 21 keys, 10026 bytes
+2023/10/24-10:14:57.906 4dfc Compacted 4@0 + 1@1 files => 10026 bytes
+2023/10/24-10:14:57.934 4dfc compacted to: files[ 0 1 0 0 0 0 0 ]
+2023/10/24-10:14:57.937 4dfc Delete type=2 #486
+2023/10/24-10:14:57.937 4dfc Delete type=2 #488
+2023/10/24-10:14:57.937 4dfc Delete type=2 #490
+2023/10/24-10:14:57.937 4dfc Delete type=2 #492
+2023/10/24-10:14:57.937 4dfc Delete type=2 #494
+2023/10/24-10:17:57.726 4dfc Level-0 table #497: started
+2023/10/24-10:17:57.788 4dfc Level-0 table #497: 17010 bytes OK
+2023/10/24-10:17:57.821 4dfc Delete type=0 #493
+2023/10/24-10:20:57.736 4dfc Level-0 table #499: started
+2023/10/24-10:20:57.786 4dfc Level-0 table #499: 17012 bytes OK
+2023/10/24-10:20:57.816 4dfc Delete type=0 #496
+2023/10/24-10:23:57.731 4dfc Level-0 table #501: started
+2023/10/24-10:23:57.791 4dfc Level-0 table #501: 17012 bytes OK
+2023/10/24-10:23:57.824 4dfc Delete type=0 #498
+2023/10/24-10:26:57.727 4dfc Level-0 table #503: started
+2023/10/24-10:26:57.802 4dfc Level-0 table #503: 17011 bytes OK
+2023/10/24-10:26:57.834 4dfc Delete type=0 #500
+2023/10/24-10:26:57.835 4dfc Compacting 4@0 + 1@1 files
+2023/10/24-10:26:57.886 4dfc Generated table #504@0: 21 keys, 10026 bytes
+2023/10/24-10:26:57.886 4dfc Compacted 4@0 + 1@1 files => 10026 bytes
+2023/10/24-10:26:57.907 4dfc compacted to: files[ 0 1 0 0 0 0 0 ]
+2023/10/24-10:26:57.910 4dfc Delete type=2 #495
+2023/10/24-10:26:57.910 4dfc Delete type=2 #497
+2023/10/24-10:26:57.910 4dfc Delete type=2 #499
+2023/10/24-10:26:57.910 4dfc Delete type=2 #501
+2023/10/24-10:26:57.910 4dfc Delete type=2 #503
+2023/10/24-10:29:57.739 4dfc Level-0 table #506: started
+2023/10/24-10:29:57.794 4dfc Level-0 table #506: 17012 bytes OK
+2023/10/24-10:29:57.828 4dfc Delete type=0 #502
+2023/10/24-10:32:57.733 4dfc Level-0 table #508: started
+2023/10/24-10:32:57.778 4dfc Level-0 table #508: 17012 bytes OK
+2023/10/24-10:32:57.801 4dfc Delete type=0 #505
+2023/10/24-10:35:57.742 4dfc Level-0 table #510: started
+2023/10/24-10:35:57.796 4dfc Level-0 table #510: 17010 bytes OK
+2023/10/24-10:35:57.818 4dfc Delete type=0 #507
+2023/10/24-10:38:57.725 4dfc Level-0 table #512: started
+2023/10/24-10:38:57.782 4dfc Level-0 table #512: 17015 bytes OK
+2023/10/24-10:38:57.816 4dfc Delete type=0 #509
+2023/10/24-10:38:57.818 4dfc Compacting 4@0 + 1@1 files
+2023/10/24-10:38:57.879 4dfc Generated table #513@0: 21 keys, 10025 bytes
+2023/10/24-10:38:57.879 4dfc Compacted 4@0 + 1@1 files => 10025 bytes
+2023/10/24-10:38:57.904 4dfc compacted to: files[ 0 1 0 0 0 0 0 ]
+2023/10/24-10:38:57.906 4dfc Delete type=2 #504
+2023/10/24-10:38:57.907 4dfc Delete type=2 #506
+2023/10/24-10:38:57.907 4dfc Delete type=2 #508
+2023/10/24-10:38:57.907 4dfc Delete type=2 #510
+2023/10/24-10:38:57.907 4dfc Delete type=2 #512
+2023/10/24-10:41:57.722 4dfc Level-0 table #515: started
+2023/10/24-10:41:57.800 4dfc Level-0 table #515: 17012 bytes OK
+2023/10/24-10:41:57.848 4dfc Delete type=0 #511
+2023/10/24-10:44:57.742 4dfc Level-0 table #517: started
+2023/10/24-10:44:57.785 4dfc Level-0 table #517: 17010 bytes OK
+2023/10/24-10:44:57.818 4dfc Delete type=0 #514
+2023/10/24-10:47:57.736 4dfc Level-0 table #519: started
+2023/10/24-10:47:57.805 4dfc Level-0 table #519: 17011 bytes OK
+2023/10/24-10:47:57.861 4dfc Delete type=0 #516
+2023/10/24-10:50:57.724 4dfc Level-0 table #521: started
+2023/10/24-10:50:57.765 4dfc Level-0 table #521: 17011 bytes OK
+2023/10/24-10:50:57.789 4dfc Delete type=0 #518
+2023/10/24-10:50:57.791 4dfc Compacting 4@0 + 1@1 files
+2023/10/24-10:50:57.846 4dfc Generated table #522@0: 21 keys, 10024 bytes
+2023/10/24-10:50:57.846 4dfc Compacted 4@0 + 1@1 files => 10024 bytes
+2023/10/24-10:50:57.865 4dfc compacted to: files[ 0 1 0 0 0 0 0 ]
+2023/10/24-10:50:57.868 4dfc Delete type=2 #513
+2023/10/24-10:50:57.868 4dfc Delete type=2 #515
+2023/10/24-10:50:57.868 4dfc Delete type=2 #517
+2023/10/24-10:50:57.868 4dfc Delete type=2 #519
+2023/10/24-10:50:57.868 4dfc Delete type=2 #521
+2023/10/24-10:53:57.756 4dfc Level-0 table #524: started
+2023/10/24-10:53:57.812 4dfc Level-0 table #524: 17010 bytes OK
+2023/10/24-10:53:57.853 4dfc Delete type=0 #520
+2023/10/24-10:56:57.733 4dfc Level-0 table #526: started
+2023/10/24-10:56:57.791 4dfc Level-0 table #526: 17012 bytes OK
+2023/10/24-10:56:57.815 4dfc Delete type=0 #523
+2023/10/24-10:59:57.734 4dfc Level-0 table #528: started
+2023/10/24-10:59:57.798 4dfc Level-0 table #528: 17012 bytes OK
+2023/10/24-10:59:57.879 4dfc Delete type=0 #525
+2023/10/24-11:02:57.730 4dfc Level-0 table #530: started
+2023/10/24-11:02:57.795 4dfc Level-0 table #530: 17009 bytes OK
+2023/10/24-11:02:57.829 4dfc Delete type=0 #527
+2023/10/24-11:02:57.831 4dfc Compacting 4@0 + 1@1 files
+2023/10/24-11:02:57.887 4dfc Generated table #531@0: 21 keys, 10025 bytes
+2023/10/24-11:02:57.887 4dfc Compacted 4@0 + 1@1 files => 10025 bytes
+2023/10/24-11:02:57.904 4dfc compacted to: files[ 0 1 0 0 0 0 0 ]
+2023/10/24-11:02:57.905 4dfc Delete type=2 #522
+2023/10/24-11:02:57.906 4dfc Delete type=2 #524
+2023/10/24-11:02:57.906 4dfc Delete type=2 #526
+2023/10/24-11:02:57.906 4dfc Delete type=2 #528
+2023/10/24-11:02:57.906 4dfc Delete type=2 #530
+2023/10/24-11:05:57.728 4dfc Level-0 table #533: started
+2023/10/24-11:05:57.783 4dfc Level-0 table #533: 17012 bytes OK
+2023/10/24-11:05:57.815 4dfc Delete type=0 #529
+2023/10/24-11:08:57.722 4dfc Level-0 table #535: started
+2023/10/24-11:08:57.787 4dfc Level-0 table #535: 17011 bytes OK
+2023/10/24-11:08:57.820 4dfc Delete type=0 #532
+2023/10/24-11:11:57.729 4dfc Level-0 table #537: started
+2023/10/24-11:11:57.778 4dfc Level-0 table #537: 17010 bytes OK
+2023/10/24-11:11:57.806 4dfc Delete type=0 #534
+2023/10/24-11:14:57.719 4dfc Level-0 table #539: started
+2023/10/24-11:14:57.800 4dfc Level-0 table #539: 17012 bytes OK
+2023/10/24-11:14:57.871 4dfc Delete type=0 #536
+2023/10/24-11:14:57.872 4dfc Compacting 4@0 + 1@1 files
+2023/10/24-11:14:57.918 4dfc Generated table #540@0: 21 keys, 10025 bytes
+2023/10/24-11:14:57.918 4dfc Compacted 4@0 + 1@1 files => 10025 bytes
+2023/10/24-11:14:57.955 4dfc compacted to: files[ 0 1 0 0 0 0 0 ]
+2023/10/24-11:14:57.956 4dfc Delete type=2 #531
+2023/10/24-11:14:57.956 4dfc Delete type=2 #533
+2023/10/24-11:14:57.957 4dfc Delete type=2 #535
+2023/10/24-11:14:57.957 4dfc Delete type=2 #537
+2023/10/24-11:14:57.957 4dfc Delete type=2 #539
+2023/10/24-11:17:57.725 4dfc Level-0 table #542: started
+2023/10/24-11:17:57.795 4dfc Level-0 table #542: 17013 bytes OK
+2023/10/24-11:17:57.825 4dfc Delete type=0 #538
+2023/10/24-11:20:57.723 4dfc Level-0 table #544: started
+2023/10/24-11:20:57.827 4dfc Level-0 table #544: 17013 bytes OK
+2023/10/24-11:20:57.895 4dfc Delete type=0 #541
+2023/10/24-11:23:57.737 4dfc Level-0 table #546: started
+2023/10/24-11:23:57.812 4dfc Level-0 table #546: 17013 bytes OK
+2023/10/24-11:23:57.844 4dfc Delete type=0 #543
+2023/10/24-11:26:57.755 4dfc Level-0 table #548: started
+2023/10/24-11:26:57.843 4dfc Level-0 table #548: 17015 bytes OK
+2023/10/24-11:26:57.874 4dfc Delete type=0 #545
+2023/10/24-11:26:57.875 4dfc Compacting 4@0 + 1@1 files
+2023/10/24-11:26:57.966 4dfc Generated table #549@0: 21 keys, 10026 bytes
+2023/10/24-11:26:57.966 4dfc Compacted 4@0 + 1@1 files => 10026 bytes
+2023/10/24-11:26:57.994 4dfc compacted to: files[ 0 1 0 0 0 0 0 ]
+2023/10/24-11:26:57.994 4dfc Delete type=2 #540
+2023/10/24-11:26:57.994 4dfc Delete type=2 #542
+2023/10/24-11:26:57.995 4dfc Delete type=2 #544
+2023/10/24-11:26:57.995 4dfc Delete type=2 #546
+2023/10/24-11:26:57.995 4dfc Delete type=2 #548
+2023/10/24-11:29:57.736 4dfc Level-0 table #551: started
+2023/10/24-11:29:57.794 4dfc Level-0 table #551: 17013 bytes OK
+2023/10/24-11:29:57.826 4dfc Delete type=0 #547
+2023/10/24-11:32:57.734 4dfc Level-0 table #553: started
+2023/10/24-11:32:57.788 4dfc Level-0 table #553: 17013 bytes OK
+2023/10/24-11:32:57.821 4dfc Delete type=0 #550
+2023/10/24-11:35:57.729 4dfc Level-0 table #555: started
+2023/10/24-11:35:57.790 4dfc Level-0 table #555: 17014 bytes OK
+2023/10/24-11:35:57.818 4dfc Delete type=0 #552
+2023/10/24-11:38:57.720 4dfc Level-0 table #557: started
+2023/10/24-11:38:57.768 4dfc Level-0 table #557: 17013 bytes OK
+2023/10/24-11:38:57.810 4dfc Delete type=0 #554
+2023/10/24-11:38:57.812 4d8c Compacting 4@0 + 1@1 files
+2023/10/24-11:38:57.876 4d8c Generated table #558@0: 21 keys, 10026 bytes
+2023/10/24-11:38:57.876 4d8c Compacted 4@0 + 1@1 files => 10026 bytes
+2023/10/24-11:38:57.900 4d8c compacted to: files[ 0 1 0 0 0 0 0 ]
+2023/10/24-11:38:57.903 4d8c Delete type=2 #549
+2023/10/24-11:38:57.903 4d8c Delete type=2 #551
+2023/10/24-11:38:57.903 4d8c Delete type=2 #553
+2023/10/24-11:38:57.903 4d8c Delete type=2 #555
+2023/10/24-11:38:57.903 4d8c Delete type=2 #557
+2023/10/24-11:41:57.735 4dfc Level-0 table #560: started
+2023/10/24-11:41:57.805 4dfc Level-0 table #560: 17013 bytes OK
+2023/10/24-11:41:57.832 4dfc Delete type=0 #556
+2023/10/24-11:44:57.723 4dfc Level-0 table #562: started
+2023/10/24-11:44:57.782 4dfc Level-0 table #562: 17015 bytes OK
+2023/10/24-11:44:57.814 4dfc Delete type=0 #559
+2023/10/24-11:47:57.724 4dfc Level-0 table #564: started
+2023/10/24-11:47:57.783 4dfc Level-0 table #564: 17012 bytes OK
+2023/10/24-11:47:57.813 4dfc Delete type=0 #561
+2023/10/24-11:50:57.720 4dfc Level-0 table #566: started
+2023/10/24-11:50:57.773 4dfc Level-0 table #566: 17013 bytes OK
+2023/10/24-11:50:57.818 4dfc Delete type=0 #563
+2023/10/24-11:50:57.819 4dfc Compacting 4@0 + 1@1 files
+2023/10/24-11:50:57.862 4dfc Generated table #567@0: 21 keys, 10026 bytes
+2023/10/24-11:50:57.862 4dfc Compacted 4@0 + 1@1 files => 10026 bytes
+2023/10/24-11:50:57.894 4dfc compacted to: files[ 0 1 0 0 0 0 0 ]
+2023/10/24-11:50:57.895 4dfc Delete type=2 #558
+2023/10/24-11:50:57.895 4dfc Delete type=2 #560
+2023/10/24-11:50:57.895 4dfc Delete type=2 #562
+2023/10/24-11:50:57.895 4dfc Delete type=2 #564
+2023/10/24-11:50:57.895 4dfc Delete type=2 #566
+2023/10/24-11:53:57.724 4dfc Level-0 table #569: started
+2023/10/24-11:53:57.790 4dfc Level-0 table #569: 17015 bytes OK
+2023/10/24-11:53:57.815 4dfc Delete type=0 #565
+2023/10/24-11:56:57.728 4dfc Level-0 table #571: started
+2023/10/24-11:56:57.779 4dfc Level-0 table #571: 17013 bytes OK
+2023/10/24-11:56:57.813 4dfc Delete type=0 #568
