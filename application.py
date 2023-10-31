@@ -1,8 +1,9 @@
-from flask import Flask,request,render_template,redirect,url_for,jsonify
+from flask import Flask,request,render_template,redirect,url_for,jsonify,json
 import mysql.connector
 import time
 from flask_login import LoginManager,login_required,login_user ,UserMixin
 from utils import createPattern
+
 
 
 
@@ -149,6 +150,99 @@ def createSearchWord():
         file.write(searchWord)
         file.close()
         return {'Message':'Search word is set'},200
+
+@app.route("/api/olxdata1", methods=["Post", "Get"])
+def filteredContactInfo1():
+    param=list(request.args.keys())
+    # print(request.args)
+    # print(len(param))
+    findValue=list(request.args.values())
+    # print(findValue)
+    if (len(param)==1 and (param[0]=='addid'or param[0]=='contactid'or param[0]=='phonenumber' )):
+        query=f"select * from olxdata where addid='{findValue[0]}' or contactid='{findValue[0]}' or phonenumber='{findValue[0]}'"
+        print(query)
+        mycursor.execute(query)
+        data=mycursor.fetchall()
+        return data,200
+    elif len(param)<1:
+        return jsonify({"Message":"please insert proper parameters according to documentation"}),400
+    else:
+        condition1 = request.args.get('condition')
+        start=request.args.get('start')
+        range=request.args.get('range')
+        field=(request.args.get('field'))
+        conditionDictionary=json.loads(f"{condition1}")
+        print(conditionDictionary)
+
+        city=conditionDictionary.get("city")
+        cityPattern=list(map(createPattern,city))
+        category=conditionDictionary.get("category")
+        addPosted=conditionDictionary.get("addPosted")
+        recordAdded=conditionDictionary.get("recordAdded")
+
+        cityPatternPlaceholder=" OR ".join(["Address LIKE %s" for _ in cityPattern])
+        categoryPlaceholder=" OR ".join(["AddCategory = %s" for _ in category])
+        addPostedPlaceholder=f"AddPosted between '{addPosted[0]}' AND '{addPosted[1]}'"
+        recordAddedPlaceholder = f"AddPosted between '{addPosted[0]}' AND '{addPosted[1]}'"
+
+
+        q1="select "+field+" from olxdata where "
+        print(q1)
+
+        fullQuery=q1+"("+cityPatternPlaceholder+")" +" AND " + "("+categoryPlaceholder+ ")"+ " AND " +"("+addPostedPlaceholder+ ")"+ " AND " +"("+recordAddedPlaceholder+ ")"
+        print(fullQuery)
+        mycursor.execute(fullQuery, cityPattern+category)
+        data = mycursor.fetchall()
+        return data,200
+
+
+@app.route("/api/olxdata2", methods=["Post", "Get"])
+def filteredContactInfo2():
+    param=list(request.args.keys())
+    # print(request.args)
+    # print(len(param))
+    findValue=list(request.args.values())
+    # print(findValue)
+    if (len(param)==1 and (param[0]=='addid'or param[0]=='contactid'or param[0]=='phonenumber' )):
+        query=f"select * from olxdata where addid='{findValue[0]}' or contactid='{findValue[0]}' or phonenumber='{findValue[0]}'"
+        print(query)
+        mycursor.execute(query)
+        data=mycursor.fetchall()
+        return data,200
+    elif len(param)<1:
+        return jsonify({"Message":"please insert proper parameters according to documentation"}),400
+    else:
+        condition1=request.args.get('condition')
+        start = request.args.get('start')
+        range = request.args.get('range')
+        field = (request.args.get('field'))
+        conditionDictionary=json.loads(f"{condition1}")
+
+        q1="select "+field+" from olxdata where "
+        print(q1)
+
+        for x in conditionDictionary.keys():
+            if x=='city':
+                city = conditionDictionary.get("city")
+                cityPattern = list(map(createPattern, city))
+                cityPatternPlaceholder = " OR ".join(["Address LIKE %s" for _ in cityPattern])
+                q1=q1+cityPatternPlaceholder
+            elif x=='category':
+                category = conditionDictionary.get("category")
+                categoryPlaceholder = " OR ".join(["AddCategory = %s" for _ in category])
+                q1=q1+categoryPlaceholder
+            elif x=='addPosted':
+                addPosted = conditionDictionary.get("addPosted")
+                addPostedPlaceholder = f"AddPosted between '{addPosted[0]}' AND '{addPosted[1]}'"
+                q1 = q1 + addPostedPlaceholder
+
+            elif x=='recordAdded':
+                recordAdded = conditionDictionary.get("recordAdded")
+                recordAddedPlaceholder = f"AddPosted between '{recordAdded[0]}' AND '{recordAdded[1]}'"
+                q1 = q1 + recordAddedPlaceholder
+
+        print(q1)
+        return 'data'
 
 if __name__=="__main__":
     app.run(debug=True)
