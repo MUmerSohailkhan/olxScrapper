@@ -1,3 +1,6 @@
-2023/10/31-10:14:02.548 3dd4 Reusing MANIFEST E:\projects\mubashirbhai\scrapper\src\userdata\Default\Session Storage/MANIFEST-000001
-2023/10/31-10:14:02.550 3dd4 Recovering log #13
-2023/10/31-10:14:02.578 3dd4 Reusing old log E:\projects\mubashirbhai\scrapper\src\userdata\Default\Session Storage/000013.log 
+2023/11/01-10:44:08.435 55e8 Reusing MANIFEST E:\projects\mubashirbhai\scrapper\src\userdata\Default\Session Storage/MANIFEST-000001
+2023/11/01-10:44:08.436 55e8 Recovering log #13
+2023/11/01-10:44:08.717 55e8 Reusing old log E:\projects\mubashirbhai\scrapper\src\userdata\Default\Session Storage/000013.log 
+2023/11/01-11:24:22.039 5748 Level-0 table #17: started
+2023/11/01-11:24:22.124 5748 Level-0 table #17: 14589 bytes OK
+2023/11/01-11:24:22.231 5748 Delete type=0 #13

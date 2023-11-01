@@ -16,7 +16,7 @@ class OlxScrapper():
         chromeOptions.add_argument('--disable-notifications')
 
         # chromeOptions.add_argument("window-size=1280,800")
-
+        chromeOptions.add_argument('--headless')
         chromeOptions.add_argument('--disable-extensions')
         chromeOptions.add_argument("--user-data-dir=" + os.getcwd() + "\\src\\userdata")
         chromeOptions.add_argument("--disable-plugins-discovery")
