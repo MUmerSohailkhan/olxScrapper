@@ -1,3 +1,14 @@
-2023/11/01-18:24:45.687 43fc Reusing MANIFEST E:\projects\mubashirbhai\scrapper\src\userdata\Default\Session Storage/MANIFEST-000001
-2023/11/01-18:24:45.690 43fc Recovering log #16
-2023/11/01-18:24:45.737 43fc Reusing old log E:\projects\mubashirbhai\scrapper\src\userdata\Default\Session Storage/000016.log 
+2023/11/15-12:44:47.648 234c Reusing MANIFEST E:\projects\mubashirbhai\scrapper\src\userdata\Default\Session Storage/MANIFEST-000001
+2023/11/15-12:44:47.649 234c Recovering log #30
+2023/11/15-12:44:47.658 234c Level-0 table #32: started
+2023/11/15-12:44:47.690 234c Level-0 table #32: 13914 bytes OK
+2023/11/15-12:44:47.789 234c Delete type=0 #30
+2023/11/15-12:44:47.790 2d00 Compacting 4@0 + 1@1 files
+2023/11/15-12:44:47.990 2d00 Generated table #34@0: 2149 keys, 88442 bytes
+2023/11/15-12:44:47.990 2d00 Compacted 4@0 + 1@1 files => 88442 bytes
+2023/11/15-12:44:48.131 2d00 compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/11/15-12:44:48.135 2d00 Delete type=2 #21
+2023/11/15-12:44:48.135 2d00 Delete type=2 #23
+2023/11/15-12:44:48.136 2d00 Delete type=2 #26
+2023/11/15-12:44:48.191 2d00 Delete type=2 #29
+2023/11/15-12:44:48.191 2d00 Delete type=2 #32

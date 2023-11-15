@@ -8,13 +8,13 @@ import pandas as pd
 from application import mycursor,mydb
 import datetime
 
+
+
 class OlxScrapper():
     def __init__(self,searchWord):
         chromeOptions = webdriver.ChromeOptions()
-
         # chromeOptions.add_argument('--headless')
         chromeOptions.add_argument('--disable-notifications')
-
         # chromeOptions.add_argument("window-size=1280,800")
         chromeOptions.add_argument('--headless')
         chromeOptions.add_argument('--disable-extensions')

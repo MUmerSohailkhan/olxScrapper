@@ -199,10 +199,7 @@ def filteredContactInfo1():
 @app.route("/api/olxdata2", methods=["Post", "Get"])
 def filteredContactInfo2():
     param=list(request.args.keys())
-    # print(request.args)
-    # print(len(param))
     findValue=list(request.args.values())
-    # print(findValue)
     if (len(param)==1 and (param[0]=='addid'or param[0]=='contactid'or param[0]=='phonenumber' )):
         query=f"select * from olxdata where addid='{findValue[0]}' or contactid='{findValue[0]}' or phonenumber='{findValue[0]}'"
         print(query)
@@ -212,7 +209,6 @@ def filteredContactInfo2():
     elif len(param)<1:
         return jsonify({"Message":"please insert proper parameters according to documentation"}),400
     else:
-
         if 'condition' in param and  'field' in param:
             condition1=request.args.get('condition')
             start = request.args.get('start')
@@ -221,10 +217,9 @@ def filteredContactInfo2():
             conditionDictionary=json.loads(f"{condition1}")
 
             q1="select "+field+" from olxdata where "
-        # print(q1)
+            q2=f" LIMIT {range} OFFSET {start}"
             paramCount=0
             for x in conditionDictionary.keys():
-            # print(x)
                 if x=='city':
                     city = conditionDictionary.get("city")
                     cityPattern = list(map(createPattern, city))
@@ -267,9 +262,11 @@ def filteredContactInfo2():
                         recordAddedPlaceholder = "(" + f"AddPosted between '{recordAdded[0]}' AND '{recordAdded[1]}'"+")"
                         q1 = q1 + recordAddedPlaceholder
             print(q1)
+            q1=q1+q2
             mycursor.execute(q1, cityPattern + category)
             data = mycursor.fetchall()
             return data
+
         elif 'searchString' in param and 'field' in param:
             searchString=request.args.get('searchString')
             field = (request.args.get('field'))
@@ -287,7 +284,53 @@ def filteredContactInfo2():
                             })
 
 
+@app.route("/api/olxdata3", methods=["Post", "Get"])
+def filteredContactInfo3():
+    param=list(request.args.keys())
 
+    if 'searchString' in param and 'field' in param and 'range' in param and 'start' in param:
+        searchString = request.args.get('searchString')
+        field = (request.args.get('field'))
+        start = request.args.get('start')
+        range = int(request.args.get('range'))
+        if range>50 or range<0:
+            range=50
+
+        q2 = f" LIMIT {range} OFFSET {start}"
+
+        q1 = f"select {field} from olxdata where addHeading like '%{searchString}%' OR addDescription like '%{searchString}%'OR " \
+         f"address like '%{searchString}%'OR name like '%{searchString}%' OR phonenumber like '%{searchString}%'" \
+         f"OR membersince like '%{searchString}%' OR addPosted like '%{searchString}%' OR addid like '%{searchString}%'" \
+         f"OR price like '%{searchString}%' OR addcategory like '%{searchString}%' OR recordadded like '%{searchString}%'"
+        mycursor.execute(q1 + q2)
+        data = mycursor.fetchall()
+        return data
+    else:
+        return jsonify({'message': "send proper parameters",
+                        'parameters':"fields,start,range,searchString "
+                })
+
+
+
+
+
+@app.route("/api/dataCount1", methods=["Post", "Get"])
+def dataCount1():
+    param=list(request.args.keys())
+    if 'searchString' in param  and request.args.get('searchString')!='':
+        searchString = request.args.get('searchString')
+        q1 = f"select count(*) from olxdata where addHeading like '%{searchString}%' OR addDescription like '%{searchString}%'OR " \
+             f"address like '%{searchString}%'OR name like '%{searchString}%' OR phonenumber like '%{searchString}%'" \
+             f"OR membersince like '%{searchString}%' OR addPosted like '%{searchString}%' OR addid like '%{searchString}%'" \
+             f"OR price like '%{searchString}%' OR addcategory like '%{searchString}%' OR recordadded like '%{searchString}%'"
+        mycursor.execute(q1)
+        totalRecord = mycursor.fetchall()
+        # print(totalRecord[0][0])
+
+        return jsonify({'no of Records': totalRecord[0][0]})
+    else:
+
+        return jsonify({"message":"send the search string"})
 
 
 

@@ -1,12 +1,3 @@
-2023/11/01-10:44:00.846 507c Reusing MANIFEST E:\projects\mubashirbhai\scrapper\src\userdata\Default\IndexedDB\https_www.olx.com.pk_0.indexeddb.leveldb/MANIFEST-000001
-2023/11/01-10:44:00.847 507c Recovering log #29
-2023/11/01-10:44:01.364 507c Reusing old log E:\projects\mubashirbhai\scrapper\src\userdata\Default\IndexedDB\https_www.olx.com.pk_0.indexeddb.leveldb/000029.log 
-2023/11/01-12:22:09.860 4254 Level-0 table #34: started
-2023/11/01-12:22:10.144 4254 Level-0 table #34: 1236692 bytes OK
-2023/11/01-12:22:10.209 4254 Delete type=0 #29
-2023/11/01-12:24:29.188 1ea8 Compacting 1@1 + 1@2 files
-2023/11/01-12:24:29.268 1ea8 Generated table #35@1: 203 keys, 6414 bytes
-2023/11/01-12:24:29.268 1ea8 Compacted 1@1 + 1@2 files => 6414 bytes
-2023/11/01-12:24:29.312 1ea8 compacted to: files[ 0 0 1 0 0 0 0 ]
-2023/11/01-12:24:29.313 1ea8 Delete type=2 #31
-2023/11/01-12:24:29.313 1ea8 Delete type=2 #34
+2023/11/14-18:14:16.083 38fc Reusing MANIFEST E:\projects\mubashirbhai\scrapper\src\userdata\Default\IndexedDB\https_www.olx.com.pk_0.indexeddb.leveldb/MANIFEST-000001
+2023/11/14-18:14:16.083 38fc Recovering log #33
+2023/11/14-18:14:16.120 38fc Reusing old log E:\projects\mubashirbhai\scrapper\src\userdata\Default\IndexedDB\https_www.olx.com.pk_0.indexeddb.leveldb/000033.log 
